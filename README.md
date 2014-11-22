@@ -1,4 +1,4 @@
-shuklaalok7.github.io
-=====================
+Alumni Association, IIT Kanpur
+======
 
-A website for IITK Alumni association. This is being developed by IITK AA Delhi Office.
+This website and content is being maintained by Delhi Office of Alumni Association. This website is temporarily hosted on GitHub pages. You can open it by clicking [this link](http://shuklaalok7.github.io/iitkaa/).
