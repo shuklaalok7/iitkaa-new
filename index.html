@@ -97,6 +97,9 @@
                 </ul>
             </div>
         </div>
+
+        <a class="twitter-timeline"  href="https://twitter.com/iitkaadelhi" data-widget-id="536826408866025472">Tweets from us</a>
+
         <div class="row feature ss">
             <div class="span6 info">
                 <h3>
@@ -194,6 +197,20 @@
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+    !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + "://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");
+
+    if(window.location.href.indexOf('mailSent')>-1) {
+        $('.mailSentLabel').removeClass('hide');
+    }
+
     $(document).ready(function() {
         var body = $('body');
         body.on('click', '.see-more', function(e) {
@@ -205,6 +222,7 @@
             $(this).closest('x').addClass('hide');
             $(this).closest('ul').find('.see-more').removeClass('hide');
         });
+
     });
 </script>
 

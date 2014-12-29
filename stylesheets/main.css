@@ -2,3 +2,19 @@
 .feature .span6 {
     margin-top: 5% !important;
 }
+
+.mail-form .control-group .controls input {
+    width: 400px;
+}
+
+.mail-form .control-group .controls textarea {
+    width: 400px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
