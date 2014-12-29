@@ -123,6 +123,7 @@
         var errorSpan = $('.error-span');
         var verifyMailForm = function() {
             errorSpan.addClass('hide');
+            errorSpan.addClass('red').removeClass('green');
             if(!$('#inputSubject').val().length) {
                 errorSpan.html('Please enter a subject.');
                 errorSpan.removeClass('hide');
