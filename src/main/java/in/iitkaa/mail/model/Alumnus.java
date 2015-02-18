@@ -12,6 +12,7 @@ import lombok.Setter;
 public class Alumnus {
     private String name;
     private String email;
+    public String test;
 
     public Alumnus() {
     }

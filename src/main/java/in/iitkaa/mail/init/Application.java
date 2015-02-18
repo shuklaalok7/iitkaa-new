@@ -9,6 +9,6 @@ import in.iitkaa.mail.MailSender;
 public class Application {
     public static void main(String... args) {
         MailSender mailSender = new MailSender();
-        mailSender.sendMail("Hello World", "My first email with SendGrid Java!");
+        mailSender.sendMail("Meeting on last Wednesday", "It was nice meeting you last Wednesday evening.");
     }
 }
