@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Alumnus {
+public class Alumnus extends PersistentObject {
     private String name;
     private String email;
     public String test;

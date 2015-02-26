@@ -1,12 +1,14 @@
 package in.iitkaa.mail.manager;
 
-import org.springframework.stereotype.Service;
-
 /**
  * @author Alok
- * @since 18-02-2015
+ * @since 20-02-2015
  */
-@Service("MailService")
-public class MailService {
-
+public interface MailService {
+    /**
+     * Send mail to the intended recipients
+     * @param subject     Subject of the mail
+     * @param bodyText    Message of the mail
+     */
+    public void sendMail(String subject, String bodyText);
 }

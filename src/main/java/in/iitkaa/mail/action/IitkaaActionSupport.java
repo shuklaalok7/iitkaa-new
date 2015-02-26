@@ -1,9 +1,10 @@
 package in.iitkaa.mail.action;
 
 import com.opensymphony.xwork2.Preparable;
-import in.iitkaa.mail.manager.MailService;
+import in.iitkaa.mail.manager.impl.MailServiceImpl;
 import in.iitkaa.mail.util.AppConfig;
 import in.iitkaa.mail.util.ServiceLocator;
+import lombok.Getter;
 import org.apache.struts2.convention.annotation.*;
 import org.apache.struts2.dispatcher.DefaultActionSupport;
 import org.apache.struts2.interceptor.ParameterAware;
@@ -34,14 +35,15 @@ public abstract class IitkaaActionSupport extends DefaultActionSupport implement
     private HttpServletRequest servletRequest;
     private HttpServletResponse servletResponse;
 
+    @Getter
     private String pageTitle;
 
     // SERVICES
-    protected MailService mailService;
+    protected MailServiceImpl mailService;
 
-    public MailService getMailService() {
+    public MailServiceImpl getMailService() {
         if(this.mailService == null) {
-            this.mailService = ServiceLocator.getBean(MailService.class);
+            this.mailService = ServiceLocator.getBean(MailServiceImpl.class);
         }
         return this.mailService;
     }
