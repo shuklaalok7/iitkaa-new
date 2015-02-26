@@ -7,6 +7,7 @@ import in.iitkaa.mail.model.Alumnus;
 import in.iitkaa.mail.util.AppConfig;
 import in.iitkaa.mail.util.AppUtils;
 import in.iitkaa.mail.util.GlobalConstants;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -25,25 +26,28 @@ import static java.lang.String.format;
 public class SendGridAdaptor implements MailAdaptor {
     private final String BODY_TEXT_TOKEN = "TEXT_CONTENT_GOES_HERE";
 
+    @Autowired
+    private AppConfig appConfig;
+
     @Override
     public void send(Set<Alumnus> recipients, String subject, String bodyText) {
         Objects.requireNonNull(subject);
         Objects.requireNonNull(bodyText);
 
         Base64.Decoder decoder = Base64.getDecoder();
-        SendGrid sendGrid = new SendGrid(new String(decoder.decode(AppConfig.SEND_GRID_USERNAME)),
-                new String(decoder.decode(AppConfig.SEND_GRID_PASSWORD)));
+        SendGrid sendGrid = new SendGrid(new String(decoder.decode(this.appConfig.getSendGridUsername())),
+                new String(decoder.decode(this.appConfig.getSendGridPassword())));
         SendGrid.Email email = new SendGrid.Email();
         recipients.forEach(recipient -> email.addBcc(recipient.getEmail()));
 
-        email.setFrom(AppConfig.MailConfig.FROM_EMAIL);
-        email.setFromName(AppConfig.MailConfig.FROM_NAME);
+        email.setFrom(this.appConfig.getMailConfig().getFromEmail());
+        email.setFromName(this.appConfig.getMailConfig().getFromName());
         email.setSubject(subject);
         this.setHtmlBody(bodyText, email);
 
         try {
             SendGrid.Response response;
-            if (!AppConfig.DEV_MODE) {
+            if (!this.appConfig.getDevMode()) {
                 response = sendGrid.send(email);
             } else {
                 response = new SendGrid.Response(200, "Dev mode ON.");
@@ -56,7 +60,7 @@ public class SendGridAdaptor implements MailAdaptor {
 
     private void setHtmlBody(String bodyText, SendGrid.Email email) {
         String filePath = format("%s%s%s%s%d%s%s", AppConfig.RESOURCE_DIRECTORY, GlobalConstants.SLASH,
-                AppConfig.TEMPLATE_FILE, GlobalConstants.UNDERSCORE, AppConfig.TEMPLATE_FILE_VERSION,
+                this.appConfig.getTemplateFile(), GlobalConstants.UNDERSCORE, this.appConfig.getTemplateFileVersion(),
                 GlobalConstants.DOT, GlobalConstants.HTML);
         try {
             String htmlBody = AppUtils.readFile(new File(filePath));

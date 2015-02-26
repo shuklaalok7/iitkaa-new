@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="devMode" class="java.lang.Boolean">
+        <constructor-arg value="true" />
+    </bean>
+
+    <bean id="databaseHost" class="java.lang.String">
+        <constructor-arg value="localhost"/>
+    </bean>
+
+    <bean id="databaseName" class="java.lang.String">
+        <constructor-arg value="iitkaa"/>
+    </bean>
+
+    <bean id="databasePort" class="java.lang.Integer">
+        <constructor-arg value="27017"/>
+    </bean>
+
+    <bean id="sendGridUsername" class="java.lang.String">
+        <constructor-arg value="c2h1a2xhYWxvazc="/>
+    </bean>
+
+    <bean id="sendGridPassword" class="java.lang.String">
+        <constructor-arg value="MW5pc2h0aGE="/>
+    </bean>
+
+    <bean id="templateFile" class="java.lang.String">
+        <constructor-arg value="mail"/>
+    </bean>
+
+    <bean id="templateFileVersion" class="java.lang.Integer">
+        <constructor-arg value="1"/>
+    </bean>
+
+    <bean id="pageTitle" class="java.lang.String">
+        <constructor-arg value="IITK AA, Delhi Office"/>
+    </bean>
+
+    <bean id="mailConfig" class="in.iitkaa.mail.util.AppConfig$MailConfig">
+        <constructor-arg name="fromName" value="Delhi Office of Alumni Association, IIT Kanpur" />
+        <constructor-arg name="fromEmail" value="iitkaa.delhi@gmail.com" />
+    </bean>
+
+</beans>

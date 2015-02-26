@@ -11,4 +11,5 @@ public final class GlobalConstants {
     public static final String DOT          = ".";
     public static final String HTML         = "html";
     public static final String UNCHECKED    = "unchecked";
+    public static final String BLANK        = "";
 }

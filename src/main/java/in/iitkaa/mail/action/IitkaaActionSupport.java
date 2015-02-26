@@ -1,6 +1,9 @@
 package in.iitkaa.mail.action;
 
 import com.opensymphony.xwork2.Preparable;
+import in.iitkaa.mail.manager.AlumnusService;
+import in.iitkaa.mail.manager.MailService;
+import in.iitkaa.mail.manager.impl.AlumnusServiceImpl;
 import in.iitkaa.mail.manager.impl.MailServiceImpl;
 import in.iitkaa.mail.util.AppConfig;
 import in.iitkaa.mail.util.ServiceLocator;
@@ -38,19 +41,36 @@ public abstract class IitkaaActionSupport extends DefaultActionSupport implement
     @Getter
     private String pageTitle;
 
-    // SERVICES
-    protected MailServiceImpl mailService;
+    private AppConfig appConfig;
 
-    public MailServiceImpl getMailService() {
+    // SERVICES
+    private MailService mailService;
+    private AlumnusService alumnusService;
+
+    protected MailService getMailService() {
         if(this.mailService == null) {
             this.mailService = ServiceLocator.getBean(MailServiceImpl.class);
         }
         return this.mailService;
     }
 
+    protected AlumnusService getAlumnusService() {
+        if(this.alumnusService == null) {
+            this.alumnusService = ServiceLocator.getBean(AlumnusServiceImpl.class);
+        }
+        return this.alumnusService;
+    }
+
+    protected AppConfig getAppConfig() {
+        if(this.appConfig == null) {
+            this.appConfig = ServiceLocator.getBean(AppConfig.class);
+        }
+        return this.appConfig;
+    }
+
     @Override
     public void prepare() throws Exception {
-        this.pageTitle = AppConfig.PAGE_TITLE;
+        this.pageTitle = this.getAppConfig().getPageTitle();
     }
 
     @Override
