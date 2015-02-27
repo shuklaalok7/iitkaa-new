@@ -101,6 +101,12 @@
             <version>${mongo-driver-version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson-version}</version>
+        </dependency>
+
         <!-- STRUTS2 -->
         <dependency>
             <groupId>org.apache.struts</groupId>

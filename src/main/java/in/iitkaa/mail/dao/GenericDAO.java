@@ -29,10 +29,10 @@ public interface GenericDAO {
 
     /**
      *
+     * @param tClass
      * @param _id
      * @param <T>
-     * @return
      */
-    public <T extends PersistentObject> boolean delete(MongoObjectId _id);
+    public <T extends PersistentObject> void delete(Class<T> tClass, MongoObjectId _id);
 
 }

@@ -20,11 +20,11 @@
     </bean>
 
     <bean id="sendGridUsername" class="java.lang.String">
-        <constructor-arg value="c2h1a2xhYWxvazc="/>
+        <constructor-arg value="VVNFUk5BTUU="/>
     </bean>
 
     <bean id="sendGridPassword" class="java.lang.String">
-        <constructor-arg value="MW5pc2h0aGE="/>
+        <constructor-arg value="UEFTU1dPUkQ="/>
     </bean>
 
     <bean id="templateFile" class="java.lang.String">

@@ -29,8 +29,8 @@ import java.util.Map;
         @ExceptionMapping(exception = "java.lang.Exception", result = "error.jsp")
 })
 @Result(name = IitkaaActionSupport.ERROR, location = "error.jsp")
-public abstract class IitkaaActionSupport extends DefaultActionSupport implements SessionAware, ServletRequestAware,
-        ServletResponseAware, ParameterAware, Preparable {
+public abstract class IitkaaActionSupport extends DefaultActionSupport implements SessionAware,
+        ServletRequestAware, ServletResponseAware, ParameterAware, Preparable {
     protected static final String REDIRECT = "redirect";
 
     private Map<String, Object> session;

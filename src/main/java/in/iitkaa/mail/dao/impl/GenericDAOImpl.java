@@ -1,5 +1,6 @@
 package in.iitkaa.mail.dao.impl;
 
+import com.mongodb.BasicDBObject;
 import in.iitkaa.mail.dao.GenericDAO;
 import in.iitkaa.mail.dto.RequestDTO;
 import in.iitkaa.mail.dto.ResponseDTO;
@@ -24,7 +25,7 @@ public class GenericDAOImpl extends IitkaaDAOSupport implements GenericDAO {
     }
 
     @Override
-    public <T extends PersistentObject> boolean delete(MongoObjectId _id) {
-        return false;
+    public <T extends PersistentObject> void delete(Class<T> tClass, MongoObjectId _id) {
+        this.getCollection(tClass).remove(new BasicDBObject("_id", _id.getObjectId()));
     }
 }
