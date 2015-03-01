@@ -1,12 +1,12 @@
 package in.iitkaa.mail.adaptor.impl;
 
 import com.nishionline.struts.core.utils.ApplicationConfig;
+import com.nishionline.struts.core.utils.ApplicationUtils;
 import com.nishionline.struts.core.utils.GlobalConstants;
 import com.sendgrid.SendGrid;
 import com.sendgrid.SendGridException;
 import in.iitkaa.mail.adaptor.MailAdaptor;
 import in.iitkaa.mail.model.Alumnus;
-import in.iitkaa.mail.util.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -63,7 +63,7 @@ public class SendGridAdaptor implements MailAdaptor {
                 this.applicationConfig.getTemplateFile(), GlobalConstants.UNDERSCORE, this.applicationConfig.getTemplateFileVersion(),
                 GlobalConstants.DOT, GlobalConstants.HTML);
         try {
-            String htmlBody = AppUtils.readFile(new File(filePath));
+            String htmlBody = ApplicationUtils.readFile(new File(filePath));
             htmlBody = htmlBody.replace(this.BODY_TEXT_TOKEN, bodyText);
             email.setHtml(htmlBody);
 

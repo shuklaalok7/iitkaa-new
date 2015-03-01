@@ -1,5 +1,6 @@
 package in.iitkaa.mail.dto;
 
+import com.nishionline.struts.core.dto.ResponseDTO;
 import in.iitkaa.mail.model.Alumnus;
 import lombok.Getter;
 import lombok.Setter;

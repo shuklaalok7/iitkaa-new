@@ -6,7 +6,6 @@ import in.iitkaa.mail.manager.AlumnusService;
 import in.iitkaa.mail.manager.MailService;
 import in.iitkaa.mail.manager.impl.AlumnusServiceImpl;
 import in.iitkaa.mail.manager.impl.MailServiceImpl;
-import in.iitkaa.mail.util.AppConfig;
 import lombok.Getter;
 import org.apache.struts2.convention.annotation.*;
 
@@ -24,8 +23,6 @@ public abstract class IitkaaActionSupport extends ActionSupport {
 
     @Getter
     private String pageTitle;
-
-    private AppConfig appConfig;
 
     // SERVICES
     private MailService mailService;
@@ -45,17 +42,10 @@ public abstract class IitkaaActionSupport extends ActionSupport {
         return this.alumnusService;
     }
 
-    protected AppConfig getAppConfig() {
-        if(this.appConfig == null) {
-            this.appConfig = ServiceLocator.getBean(AppConfig.class);
-        }
-        return this.appConfig;
-    }
-
     @Override
     public void prepare() throws Exception {
         super.prepare();
-        this.pageTitle = this.getAppConfig().getPageTitle();
+        this.pageTitle = this.getApplicationConfig().getPageTitle();
     }
 
 }

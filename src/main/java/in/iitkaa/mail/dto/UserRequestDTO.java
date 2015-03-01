@@ -1,5 +1,6 @@
 package in.iitkaa.mail.dto;
 
+import com.nishionline.struts.core.dto.RequestDTO;
 import in.iitkaa.mail.model.User;
 
 /**
