@@ -1,5 +1,6 @@
 package in.iitkaa.mail.model;
 
+import com.nishionline.struts.core.models.PersistentObject;
 import lombok.Getter;
 import lombok.Setter;
 

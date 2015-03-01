@@ -5,7 +5,7 @@ import in.iitkaa.mail.manager.MailService;
 import in.iitkaa.mail.model.Alumnus;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.io.File;
 import java.util.Set;
 
 /**
@@ -16,10 +16,10 @@ import java.util.Set;
 public class MailServiceImpl extends IitkaaManagerSupport implements MailService {
 
     @Override
-    public void sendMail(String subject, String bodyText) {
+    public void sendMail(String subject, String bodyText, File... attachments) {
         // Fetch alumnus from somewhere
         AlumnusRequestDTO alumnusRequestDTO = new AlumnusRequestDTO();
         Set<Alumnus> alumni = this.alumnusService.search(alumnusRequestDTO);
-        this.mailAdaptor.send(Collections.<Alumnus>emptySet(), subject, bodyText);
+        this.mailAdaptor.send(alumni, subject, bodyText, attachments);
     }
 }

@@ -1,5 +1,6 @@
 package in.iitkaa.mail.util;
 
+import com.nishionline.struts.core.utils.ApplicationConfig;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,7 @@ import javax.annotation.Resource;
 /**
  * @author Alok
  * @since 17-02-2015
+ * @deprecated Use one from the strutsBase
  */
 @Getter
 @Component("AppConfig")
@@ -28,6 +30,15 @@ public class AppConfig {
     @Resource(name = "databasePort")
     private Integer databasePort;
 
+    @Resource(name = "securedDb")
+    private Boolean securedDb;
+
+    @Resource(name = "dbUsername")
+    private String dbUsername;
+
+    @Resource(name = "dbPassword")
+    private String dbPassword;
+
     @Resource(name = "sendGridUsername")
     private String sendGridUsername;
 
@@ -44,16 +55,6 @@ public class AppConfig {
     private String pageTitle;
 
     @Resource(name = "mailConfig")
-    private MailConfig mailConfig;
+    private ApplicationConfig.MailConfig mailConfig;
 
-    @Getter
-    public static class MailConfig {
-        private String fromName;
-        private String fromEmail;
-
-        public MailConfig(String fromName, String fromEmail) {
-            this.fromName = fromName;
-            this.fromEmail = fromEmail;
-        }
-    }
 }

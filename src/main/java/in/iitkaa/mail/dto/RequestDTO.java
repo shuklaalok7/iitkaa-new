@@ -1,6 +1,7 @@
 package in.iitkaa.mail.dto;
 
-import in.iitkaa.mail.model.PersistentObject;
+import com.nishionline.struts.core.models.MongoObjectId;
+import com.nishionline.struts.core.models.PersistentObject;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,4 +12,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class RequestDTO<T extends PersistentObject> {
+    private MongoObjectId _id;
 }

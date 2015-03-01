@@ -23,6 +23,13 @@
         </div>
 
         <div class="form-group">
+            <label for="inputAttachment" class="col-sm-2 control-label">Attachment</label>
+            <div class="col-sm-10">
+                <input type="file" name="attachment" class="form-control" id="inputAttachment" placeholder="File">
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-default">Cancel</button>

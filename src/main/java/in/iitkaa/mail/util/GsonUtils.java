@@ -1,7 +1,7 @@
 package in.iitkaa.mail.util;
 
 import com.google.gson.*;
-import in.iitkaa.mail.model.MongoObjectId;
+import com.nishionline.struts.core.models.MongoObjectId;
 import org.bson.types.ObjectId;
 
 import java.lang.reflect.Modifier;
@@ -10,6 +10,7 @@ import java.lang.reflect.Type;
 /**
  * @author Alok
  * @since 27-02-2015
+ * @deprecated Use one from the strutsBase
  */
 public class GsonUtils {
     public static Gson gson;

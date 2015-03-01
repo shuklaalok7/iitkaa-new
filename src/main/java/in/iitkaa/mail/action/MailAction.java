@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
+import java.io.File;
+
 /**
  * @author Alok
  * @since 18-02-2015
@@ -15,6 +17,7 @@ import org.apache.struts2.convention.annotation.Result;
 public class MailAction extends IitkaaActionSupport {
     private String subject;
     private String bodyText;
+    private File attachment;
 
     @Override
     @Action("/")
@@ -26,7 +29,7 @@ public class MailAction extends IitkaaActionSupport {
             @Result(name = IitkaaActionSupport.SUCCESS, location = "mail.jsp")
     })
     public String sendMail() {
-        this.getMailService().sendMail(this.getSubject(), this.getBodyText());
+        this.getMailService().sendMail(this.getSubject(), this.getBodyText(), this.getAttachment());
         return IitkaaActionSupport.SUCCESS;
     }
 

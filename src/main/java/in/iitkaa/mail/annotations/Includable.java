@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
  * Marker annotation
  * @author Alok
  * @since 26-02-2015
+ * @deprecated Use {@link com.nishionline.struts.core.annotations.Embeddable}
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,6 +1,6 @@
 package in.iitkaa.mail.annotations;
 
-import in.iitkaa.mail.util.GlobalConstants;
+import com.nishionline.struts.core.utils.GlobalConstants;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,6 +10,7 @@ import java.lang.annotation.Target;
 /**
  * @author Alok
  * @since 26-02-2015
+ * @deprecated Use one in the strutsBase
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

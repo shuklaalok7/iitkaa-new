@@ -1,9 +1,10 @@
 package in.iitkaa.mail.dao;
 
+import com.nishionline.struts.core.models.MongoObjectId;
+import com.nishionline.struts.core.models.PersistentObject;
 import in.iitkaa.mail.dto.RequestDTO;
-import in.iitkaa.mail.dto.ResponseDTO;
-import in.iitkaa.mail.model.MongoObjectId;
-import in.iitkaa.mail.model.PersistentObject;
+
+import java.util.List;
 
 /**
  * @author Alok
@@ -25,7 +26,7 @@ public interface GenericDAO {
      * @param <T>
      * @return
      */
-    public <T extends PersistentObject> ResponseDTO<T> search(RequestDTO<T> requestDTO);
+    public <T extends PersistentObject> List<T> search(Class<T> tClass, RequestDTO<T> requestDTO);
 
     /**
      *

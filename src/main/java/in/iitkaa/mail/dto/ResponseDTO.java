@@ -1,6 +1,6 @@
 package in.iitkaa.mail.dto;
 
-import in.iitkaa.mail.model.PersistentObject;
+import com.nishionline.struts.core.models.PersistentObject;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -19,6 +19,18 @@
         <constructor-arg value="27017"/>
     </bean>
 
+    <bean id="securedDb" class="java.lang.Boolean">
+        <constructor-arg value="false"/>
+    </bean>
+
+    <bean id="dbUsername" class="java.lang.String">
+        <constructor-arg value="VVNFUk5BTUU="/>
+    </bean>
+
+    <bean id="dbPassword" class="java.lang.String">
+        <constructor-arg value="UEFTU1dPUkQ="/>
+    </bean>
+
     <bean id="sendGridUsername" class="java.lang.String">
         <constructor-arg value="VVNFUk5BTUU="/>
     </bean>
@@ -39,7 +51,7 @@
         <constructor-arg value="IITK AA, Delhi Office"/>
     </bean>
 
-    <bean id="mailConfig" class="in.iitkaa.mail.util.AppConfig$MailConfig">
+    <bean id="mailConfig" class="com.nishionline.struts.core.utils.ApplicationConfig$MailConfig">
         <constructor-arg name="fromName" value="Delhi Office of Alumni Association, IIT Kanpur" />
         <constructor-arg name="fromEmail" value="iitkaa.delhi@gmail.com" />
     </bean>

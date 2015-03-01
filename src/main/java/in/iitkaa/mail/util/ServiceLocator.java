@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * @author Alok
  * @since 18-02-2015
+ * @deprecated use one in the strutsBase
  */
 public class ServiceLocator implements ApplicationContextAware {
 
@@ -19,8 +20,8 @@ public class ServiceLocator implements ApplicationContextAware {
         ServiceLocator.applicationContext = applicationContext;
     }
 
-    @SuppressWarnings(GlobalConstants.UNCHECKED)
-    public <T extends Object> T getBean(String beanName) {
+    @SuppressWarnings(com.nishionline.struts.core.utils.GlobalConstants.UNCHECKED)
+    public <T> T getBean(String beanName) {
         return (T) applicationContext.getBean(beanName);
     }
 
@@ -32,4 +33,5 @@ public class ServiceLocator implements ApplicationContextAware {
             throw new IllegalArgumentException("More than one beans or no beans of given type are available.");
         }
     }
+
 }

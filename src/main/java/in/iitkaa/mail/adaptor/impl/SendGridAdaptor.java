@@ -1,12 +1,12 @@
 package in.iitkaa.mail.adaptor.impl;
 
+import com.nishionline.struts.core.utils.ApplicationConfig;
+import com.nishionline.struts.core.utils.GlobalConstants;
 import com.sendgrid.SendGrid;
 import com.sendgrid.SendGridException;
 import in.iitkaa.mail.adaptor.MailAdaptor;
 import in.iitkaa.mail.model.Alumnus;
-import in.iitkaa.mail.util.AppConfig;
 import in.iitkaa.mail.util.AppUtils;
-import in.iitkaa.mail.util.GlobalConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,27 +27,27 @@ public class SendGridAdaptor implements MailAdaptor {
     private final String BODY_TEXT_TOKEN = "TEXT_CONTENT_GOES_HERE";
 
     @Autowired
-    private AppConfig appConfig;
+    private ApplicationConfig applicationConfig;
 
     @Override
-    public void send(Set<Alumnus> recipients, String subject, String bodyText) {
+    public void send(Set<Alumnus> recipients, String subject, String bodyText, File... attachments) {
         Objects.requireNonNull(subject);
         Objects.requireNonNull(bodyText);
 
         Base64.Decoder decoder = Base64.getDecoder();
-        SendGrid sendGrid = new SendGrid(new String(decoder.decode(this.appConfig.getSendGridUsername())),
-                new String(decoder.decode(this.appConfig.getSendGridPassword())));
+        SendGrid sendGrid = new SendGrid(new String(decoder.decode(this.applicationConfig.getSendGridUsername())),
+                new String(decoder.decode(this.applicationConfig.getSendGridPassword())));
         SendGrid.Email email = new SendGrid.Email();
         recipients.forEach(recipient -> email.addBcc(recipient.getEmail()));
 
-        email.setFrom(this.appConfig.getMailConfig().getFromEmail());
-        email.setFromName(this.appConfig.getMailConfig().getFromName());
+        email.setFrom(this.applicationConfig.getMailConfig().getFromEmail());
+        email.setFromName(this.applicationConfig.getMailConfig().getFromName());
         email.setSubject(subject);
         this.setHtmlBody(bodyText, email);
 
         try {
             SendGrid.Response response;
-            if (!this.appConfig.getDevMode()) {
+            if (!this.applicationConfig.getDevMode()) {
                 response = sendGrid.send(email);
             } else {
                 response = new SendGrid.Response(200, "Dev mode ON.");
@@ -59,8 +59,8 @@ public class SendGridAdaptor implements MailAdaptor {
     }
 
     private void setHtmlBody(String bodyText, SendGrid.Email email) {
-        String filePath = format("%s%s%s%s%d%s%s", AppConfig.RESOURCE_DIRECTORY, GlobalConstants.SLASH,
-                this.appConfig.getTemplateFile(), GlobalConstants.UNDERSCORE, this.appConfig.getTemplateFileVersion(),
+        String filePath = format("%s%s%s%s%d%s%s", ApplicationConfig.RESOURCE_DIRECTORY, GlobalConstants.SLASH,
+                this.applicationConfig.getTemplateFile(), GlobalConstants.UNDERSCORE, this.applicationConfig.getTemplateFileVersion(),
                 GlobalConstants.DOT, GlobalConstants.HTML);
         try {
             String htmlBody = AppUtils.readFile(new File(filePath));
@@ -68,7 +68,7 @@ public class SendGridAdaptor implements MailAdaptor {
             email.setHtml(htmlBody);
 
             // Adding AA logo
-            email.addAttachment("logo.png", new File(AppConfig.RESOURCE_DIRECTORY+"/images/logo.png"));
+            email.addAttachment("logo.png", new File(ApplicationConfig.RESOURCE_DIRECTORY+"/images/logo.png"));
             email.addContentId("logo.png", "logo");
         } catch (IOException e) {
             e.printStackTrace();
