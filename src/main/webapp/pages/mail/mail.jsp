@@ -3,10 +3,10 @@
 
 <html lang="en">
 <head>
-    <jsp:include page="includables/common_css.jsp" />
+    <jsp:include page="../includables/common_css.jsp" />
 </head>
 <body>
-<jsp:include page="includables/header.jsp"/>
+<jsp:include page="../includables/header.jsp"/>
 <div class="container">
     <form class="form-horizontal" action="/send" method="post">
         <div class="form-group">
@@ -37,7 +37,7 @@
         </div>
     </form>
 
-    <jsp:include page="includables/footer.jsp" />
+    <jsp:include page="../includables/footer.jsp" />
 </div>
 </body>
 </html>

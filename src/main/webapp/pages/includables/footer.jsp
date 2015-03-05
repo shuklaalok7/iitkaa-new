@@ -2,7 +2,7 @@
 
 <hr />
 <div class="muted span10">
-    <p>&#169; 2014-15 Delhi Office of Alumni Association, IIT Kanpur</p>
+    <p>&#169; <s:property value="copyrightYear" /> Delhi Office of Alumni Association, IIT Kanpur</p>
     <small>This site is being maintained by <a href="http://www.innosols.co.in" target="_blank">Innosols Infocom Pvt Ltd</a>.</small>
 </div>
 

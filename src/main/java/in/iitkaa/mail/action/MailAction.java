@@ -3,6 +3,7 @@ package in.iitkaa.mail.action;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.File;
  */
 @Getter
 @Setter
+@Namespace("/mail")
 @Result(name = IitkaaActionSupport.SUCCESS, location = "mail.jsp")
 public class MailAction extends IitkaaActionSupport {
     private String subject;

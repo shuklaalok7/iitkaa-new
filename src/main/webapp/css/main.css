@@ -1,0 +1,9 @@
+
+.login-form {
+    width: 55%;
+    margin-left: 20%;
+    border: 1px aliceblue solid;
+    padding: 4% 5%;
+    box-shadow: #71aecd 10px 5px 25px;
+    border-radius: 5%;
+}

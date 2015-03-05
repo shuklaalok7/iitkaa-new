@@ -7,6 +7,7 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.SendGridException;
 import in.iitkaa.mail.adaptor.MailAdaptor;
 import in.iitkaa.mail.model.Alumnus;
+import in.iitkaa.mail.utils.IitkaaConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +30,9 @@ public class SendGridAdaptor implements MailAdaptor {
     @Autowired
     private ApplicationConfig applicationConfig;
 
+    @Autowired
+    private IitkaaConfig iitkaaConfig;
+
     @Override
     public void send(Set<Alumnus> recipients, String subject, String bodyText, File... attachments) {
         Objects.requireNonNull(subject);
@@ -40,8 +44,8 @@ public class SendGridAdaptor implements MailAdaptor {
         SendGrid.Email email = new SendGrid.Email();
         recipients.forEach(recipient -> email.addBcc(recipient.getEmail()));
 
-        email.setFrom(this.applicationConfig.getMailConfig().getFromEmail());
-        email.setFromName(this.applicationConfig.getMailConfig().getFromName());
+        email.setFrom(this.iitkaaConfig.getFromEmail());
+        email.setFromName(this.iitkaaConfig.getFromName());
         email.setSubject(subject);
         this.setHtmlBody(bodyText, email);
 
@@ -60,7 +64,7 @@ public class SendGridAdaptor implements MailAdaptor {
 
     private void setHtmlBody(String bodyText, SendGrid.Email email) {
         String filePath = format("%s%s%s%s%d%s%s", ApplicationConfig.RESOURCE_DIRECTORY, GlobalConstants.SLASH,
-                this.applicationConfig.getTemplateFile(), GlobalConstants.UNDERSCORE, this.applicationConfig.getTemplateFileVersion(),
+                this.iitkaaConfig.getTemplateFile(), GlobalConstants.UNDERSCORE, this.iitkaaConfig.getTemplateFileVersion(),
                 GlobalConstants.DOT, GlobalConstants.HTML);
         try {
             String htmlBody = ApplicationUtils.readFile(new File(filePath));

@@ -51,9 +51,12 @@
         <constructor-arg value="IITK AA, Delhi Office"/>
     </bean>
 
-    <bean id="mailConfig" class="com.nishionline.struts.core.utils.ApplicationConfig$MailConfig">
-        <constructor-arg name="fromName" value="Delhi Office of Alumni Association, IIT Kanpur" />
-        <constructor-arg name="fromEmail" value="iitkaa.delhi@gmail.com" />
+    <bean id="fromName" class="java.lang.String">
+        <constructor-arg value="Delhi Office of Alumni Association, IIT Kanpur" />
+    </bean>
+
+    <bean id="fromEmail" class="java.lang.String">
+        <constructor-arg value="iitkaa.delhi@gmail.com" />
     </bean>
 
 </beans>
